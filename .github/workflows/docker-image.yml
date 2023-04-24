@@ -41,7 +41,7 @@ jobs:
           platforms: linux/amd64,linux/arm64/v8
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/agent-llm-backend:${{ steps.date.outputs.today }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/agent-llm-backend:${{github.run_number }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -78,7 +78,7 @@ jobs:
           file: ./frontend/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/agent-llm-frontend:${{ steps.date.outputs.today }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/agent-llm-frontend:${{github.run_number }}
           labels: ${{ steps.meta-frontend.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
